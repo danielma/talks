@@ -36,7 +36,7 @@ Let's simplify
 
 ```typescript
 function titleize(string: string): string { // now we'll just get an error if someone sends something that's not a string
-  return string.toString().toLowerCase().replace(/(?:^|\s|-)\S/g, (c) => c.toUpperCase())
+  return string.toLowerCase().replace(/(?:^|\s|-)\S/g, (c) => c.toUpperCase())
 }
 ```
 
@@ -49,9 +49,9 @@ interface ToStringable {
 
 function titleize(string: ToStringable) {}
 
-class Yolo {}
+class FancyString {}
 
-titleize(new Yolo())
+titleize(new FancyString())
 ```
 
 Everything in JS has a `toString()` function, so this is useless, right? Maybe,
@@ -64,11 +64,11 @@ interface ToStringable {
 
 function titleize(string: ToStringable) {}
 
-class Yolo {
+class FancyString {
   toString() { return 10 } // what have you done!?!?
 }
 
-titleize(new Yolo()) // now we have a problem
+titleize(new FancyString()) // now we have a problem
 ```
 
 #### Old school namespaces
@@ -78,7 +78,7 @@ We use old school namespaces. The best way to make this work is to use your `tsd
 ```typescript
 declare namespace CoolApp {
   namespace utils {
-    function slugify(...strings: string[]): string
+    function titleize(string: string): string
   }
 }
 ```
@@ -90,7 +90,14 @@ ES6 goodness
 ```typescript
 // utils.tsx
 export function pickParty(context: string): Party {
-  return new Party()
+  switch(context) {
+    case 'parents are gone for the weekend':
+      return new RowdyParty()
+    case 'birthday':
+      return new BirthdayParty()
+    default:
+      return new Party()
+  }
 }
 
 // components/party.jsx
