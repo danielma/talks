@@ -7,19 +7,21 @@ const talks = {
   "/static-typing": StaticTyping,
 }
 
-function TalkSelector() {
-  return (
-    <div>
-      <h1>No talk found for {pathname}</h1>
-      <h2>Try one of these</h2>
+class TalkSelector extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>No talk found for {pathname}</h1>
+        <h2>Try one of these</h2>
 
-      <ul>
-        {Object.keys(talks).map((talkPath) => (
-          <li key={talkPath}><a href={talkPath}>{talkPath}</a></li>
-        ))}
-      </ul>
-    </div>
-  )
+        <ul>
+          {Object.keys(talks).map((talkPath) => (
+            <li key={talkPath}><a href={talkPath}>{talkPath}</a></li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 }
 
 const Talk = () => {
