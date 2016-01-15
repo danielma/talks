@@ -1,22 +1,35 @@
 import React from "react";
 import { render } from "react-dom";
+import StaticTyping from './static-typing'
 
-// import your presentations here
-// import MyCoolPresentation from 'my-cool-presentation'
-
-function MissingPresentation() {
-  return (
-    <h1>No presentation found. Sorry!</h1>
-  )
+const { pathname } = window.location
+const talks = {
+  "/static-typing": StaticTyping,
 }
 
-const Presentation = () => {
-  switch(window.location.pathname) {
-    // case "/cool-presentation":
-    //   return MyCoolPresentation
-    default:
-      return MissingPresentation
+class TalkSelector extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>No talk found for {pathname}</h1>
+        <h2>Try one of these</h2>
+
+        <ul>
+          {Object.keys(talks).map((talkPath) => (
+            <li key={talkPath}><a href={talkPath}>{talkPath}</a></li>
+          ))}
+        </ul>
+      </div>
+    )
   }
+}
+
+const Talk = () => {
+  if (talks.hasOwnProperty(pathname)) {
+    return talks[pathname]
+  }
+
+  return TalkSelector
 }()
 
-render(<Presentation/>, document.getElementById("root"));
+render(<Talk/>, document.getElementById("root"));
