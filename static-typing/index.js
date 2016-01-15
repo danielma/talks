@@ -16,6 +16,8 @@ import {
   Fill,
   Code,
   Image,
+  CodePane,
+  Link,
 } from "spectacle";
 
 const titleDefaults = {
@@ -48,34 +50,112 @@ export default class StaticTypingPresentation extends React.Component {
             <Text>github.com/danielma</Text>
           </Slide>
           <Slide>
-            <Title>Static vs Dynamic</Title>
+            <Title>Why am I here?</Title>
+            <Appear>
+              <Text>I like static types</Text>
+            </Appear>
+            <Appear>
+              <Text>I like Visual Studio</Text>
+            </Appear>
+          </Slide>
+          <Slide>
+            <Title>Is it correct?</Title>
             <Layout>
+              <Fill />
               <Fill>
                 <List>
-                  <Appear><LI>Compiler step</LI></Appear>
-                  <Appear><LI>Type assurance</LI></Appear>
-                  <Appear><LI>Correctness by static analysis</LI></Appear>
+                  <LI>Ask the compiler</LI>
+                  <LI>Ask your test suite</LI>
+                  <Appear>
+                    <LI>Ask them both?</LI>
+                  </Appear>
                 </List>
               </Fill>
-              <Fill>
-                <List>
-                  <Appear><LI>No compiler</LI></Appear>
-                  <Appear><LI>Duck typing</LI></Appear>
-                  <Appear><LI>Correctness by testing</LI></Appear>
-                </List>
-              </Fill>
+              <Fill />
             </Layout>
           </Slide>
           <Slide>
-            <Heading size={3} fit>What does it mean to be correct?</Heading>
-
-            <List>
-              <Appear><LI>Static: ask the compiler</LI></Appear>
-              <Appear><LI>Dynamic: ask the tests</LI></Appear>
-            </List>
+            <Title>Four Projects</Title>
+            <Layout>
+              <Fill />
+              <Fill>
+                <List>
+                  <LI>contracts.ruby</LI>
+                  <LI>Crystal</LI>
+                  <LI>babel-typecheck</LI>
+                  <LI>Typescript</LI>
+                </List>
+              </Fill>
+              <Fill />
+            </Layout>
           </Slide>
           <Slide>
-            <Image src="http://i2.kym-cdn.com/photos/images/original/000/538/731/0fc.gif"></Image>
+            <Title>Ruby</Title>
+          </Slide>
+          <Slide>
+            <Title>contracts.ruby</Title>
+            <Appear><Text>Runtime type checking for Ruby</Text></Appear>
+          </Slide>
+          <Slide>
+            <CodePane lang="ruby" source={require("raw!./assets/contracts.rb")}/>
+          </Slide>
+          <Slide>
+            <CodePane source={require("raw!./assets/contracts-error.txt")}/>
+          </Slide>
+          <Slide>
+            <CodePane lang="ruby" source={require("raw!./assets/contracts-service-before.rb")}/>
+          </Slide>
+          <Slide>
+            <CodePane lang="ruby" source={require("raw!./assets/contracts-service.rb")}/>
+          </Slide>
+          <Slide>
+            <Title>contracts.ruby</Title>
+            <Appear><Text>Yes, it's a little slow</Text></Appear>
+            <Appear>
+              <Link href="http://adit.io/posts/2013-03-04-How-I-Made-My-Ruby-Project-10x-Faster.html">But not too much</Link>
+            </Appear>
+            <Appear>
+              <Text>And it can be disabled in production with an environmental variable</Text>
+            </Appear>
+          </Slide>
+          <Slide>
+            <Title>Crystal</Title>
+            <Appear>
+              <CodePane lang="ruby" source={`puts "Hello world"`} />
+            </Appear>
+            <Appear>
+              <CodePane lang="ruby" source={`def fibonacci(n)
+  return n if n <= 1
+  fibonacci(n - 1) + fibonacci(n - 2)
+end
+puts fibonacci 40`} />
+            </Appear>
+            <Text>&nbsp;</Text>
+            <Appear>
+              <Link href="http://crystal-lang.org/">http://crystal-lang.org/</Link>
+            </Appear>
+          </Slide>
+          <Slide>
+            <Title>Javascript</Title>
+            <Appear>
+              <Text>Actually, Babel</Text>
+            </Appear>
+          </Slide>
+          <Slide>
+            <Title>babel-typecheck-plugin</Title>
+            <CodePane lang="typescript" source={require("raw!./assets/babel-typecheck.ts")} />
+            <Text>&nbsp;</Text>
+            <Appear>
+              <Text>
+                Also, flowtype.js
+              </Text>
+            </Appear>
+          </Slide>
+          <Slide>
+            <Title>Typescript</Title>
+          </Slide>
+          <Slide>
+            <Title>Available today for $199</Title>
           </Slide>
         </Deck>
       </Spectacle>

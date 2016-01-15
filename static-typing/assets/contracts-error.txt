@@ -1,0 +1,17 @@
+$ irb
+>> require("./contracts.rb")
+=> true
+>> range = DateRange.new(1, 3)
+ParamContractError: Contract violation for argument 1 of 2:
+        Expected: Date,
+        Actual: 1
+        Value guarded in: DateRange::initialize
+        With Contract: Date, Date, Bool => NilClass
+        At: /Users/danielma/Code/danielma/talks/static-typing/assets/contracts.rb:8
+>> range = DateRange.new(Time.now, Date.today)
+ParamContractError: Contract violation for argument 1 of 2:
+        Expected: Date,
+        Actual: 2016-01-14 17:41:28 -0800
+        Value guarded in: DateRange::initialize
+        With Contract: Date, Date, Bool => NilClass
+        At: /Users/danielma/Code/danielma/talks/static-typing/assets/contracts.rb:8

@@ -17,6 +17,7 @@ const builtTheme = createTheme(colors, fonts)
 
 builtTheme.screen.components.text.color = colors.secondary
 builtTheme.screen.components.heading.h3.color = colors.tertiary
+builtTheme.screen.components.link.color = "#8fa1b3"
 
 builtTheme.screen.components.code = {
   ...builtTheme.screen.components.code,
