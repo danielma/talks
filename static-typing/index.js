@@ -1,5 +1,12 @@
 import React from 'react'
 import theme from './theme'
+import preloader from 'spectacle/lib/utils/preloader'
+
+const images = {
+  apple: require("url!./assets/apple-bg.jpg")
+}
+
+preloader(images)
 
 import {
   Appear,
@@ -154,8 +161,16 @@ puts fibonacci 40`} />
           <Slide>
             <Title>Typescript</Title>
           </Slide>
+          <Slide bgImage={images.apple.replace("/", "")}>
+            <Title textColor="#fff" textFont="Myriad Pro">Available today for $199</Title>
+          </Slide>
           <Slide>
-            <Title>Available today for $199</Title>
+            <Title>Recap</Title>
+            <Text>Be more correct, have more confidence, write beautifullly</Text>
+          </Slide>
+          <Slide>
+            <Text>@danielhgma</Text>
+            <Text>github.com/danielma/talks</Text>
           </Slide>
         </Deck>
       </Spectacle>
