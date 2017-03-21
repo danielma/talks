@@ -1,10 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
 import StaticTyping from './static-typing'
+import ReactConfRecap from './react-conf-recap'
 
 const { pathname } = window.location
 const talks = {
   "/static-typing": StaticTyping,
+  "/react-conf-recap": ReactConfRecap,
 }
 
 class TalkSelector extends React.Component {
