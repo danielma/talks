@@ -24,12 +24,12 @@ class TalkSelector extends React.Component {
   }
 }
 
-const Talk = () => {
+const Talk = (() => {
   if (talks.hasOwnProperty(pathname)) {
     return talks[pathname]
   }
 
   return TalkSelector
-}()
+})()
 
 render(<Talk/>, document.getElementById("root"));
