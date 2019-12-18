@@ -20,5 +20,6 @@ builtTheme.screen.components.heading.h3.color = colors.tertiary
 builtTheme.screen.components.link.color = "#8fa1b3"
 
 builtTheme.screen.components.codePane.code.fontFamily = fonts.tertiary
+builtTheme.screen.components.codePane.code.fontSize = "1.5em"
 
 export default builtTheme
